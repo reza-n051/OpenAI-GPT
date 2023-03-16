@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+
+@tailwind utilities;
+
+@layer components{
+    .msg-container{
+        scrollbar-color: red;
+        scrollbar-width: thin;
+    }
+
+    .msg-container::-webkit-scrollbar{
+        @apply w-2;
+    }
+    .msg-container::-webkit-scrollbar-thumb{
+        @apply bg-secondary rounded-full;
+    }
+    .msg-container::-webkit-scrollbar-track{
+        @apply  rounded-full bg-primary;
+    }
+
+    .hide-scrollbar {
+        @apply [&::-webkit-scrollbar]:hidden [scrollbar-width:none];
+    }
+}

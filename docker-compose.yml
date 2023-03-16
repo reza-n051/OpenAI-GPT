@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  front:
+    build: ./front
+    volumes:
+      - ./front/:/web/
+    environment:
+      - PORT=8080
+    ports:
+      - 8080:8080  
+  back:
+    build: ./back
+    volumes:
+      - ./server/:/server/
+    ports:
+      - 8000:8000
+    environment:
+      - OPENAI_KEY=/run/secrets/openai
+    secrets:
+      - openai
+secrets:
+   openai:
+    file: ./openai_key.txt
