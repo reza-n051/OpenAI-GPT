@@ -1,29 +1,26 @@
 import eventlet
 import socketio
-import speech_recognition as sr
 import openai
-from gtts import gTTS,gTTSError
 from uuid import uuid4
-import os
-
+from revChatGPT.V3 import Chatbot
+from .text_to_speech import text_to_speech
 # openai.api_key = os.environ['OPENAI_KEY']
 openai.api_key = "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"
 FILE_STORE_PATH = "./data/"
 server = socketio.Server(cors_allowed_origins='*',max_http_buffer_size=100000000)
 app = socketio.WSGIApp(server)
-r = sr.Recognizer()
 
 @server.event
-def connect(id,data):
-    print(id)
+def connect(_,__):
+    print("start connecting ...")
 
 @server.event
-def disconnect(id):
-    print(id)
+def disconnect(_):
+    print("disconnecting ...")
+    # redis.delete(id)
 
 @server.event
 def query(id,data):
-    print("start")
     response = {
         "status":False,
         "data":"Try Again ..."
@@ -34,35 +31,28 @@ def query(id,data):
     answer_file_path = '{path}{filename}-answer.mp3'.format(path=FILE_STORE_PATH,filename=filename)
     try:
         with open(query_file_path,mode='bx') as file:
-            file.write(data)
+            file.write(data["audio"])
     except Exception as e:
+        response["data"] = "Your voice is not clear, please speak more clearly"
         server.emit('answer',response,to=id)
         return
 
     try:
         #read file and convert it to text
         x = open(query_file_path,"rb")
-        query_ text= openai.Audio.transcribe("whisper-1",x)["text"]
+        query_ text= openai.Audio.transcribe("whisper-1",x,language=data["lang"])["text"]
+        
         print(query_text) 
-        # audio_file = sr.AudioFile(query_file_path)
-        # with audio_file as af:
-        #     audio = r.record(af)
-        # query_ text= r.recognize_google(audio)
-        print('query :: {a}'.format(a=query_text))
 
     except Exception as e:
         print(e)
         server.emit('answer',response,to=id)
         return
 
-    #chat with gpt-3
+    #chat with chatGPT
     try:
-        ai_response = openai.Completion.create(
-            engine="text-davinci-003",
-            prompt=query_text,
-            max_tokens=4000
-        )
-        ai_res_ text= ai_response['choices'][0]['text']
+        chatbot = Chatbot(api_key="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")
+        ai_res_ text= chatbot.ask('please answer my question in lnaguage {lang} . {q}'.format(lang=data["lang"],q=query_text))
         print('answer :: {a}'.format(a=ai_res_text))
         ai_res_is_successful = True
     except Exception as e:
@@ -74,10 +64,7 @@ def query(id,data):
         return
     
     try:
-        #convert  textto speech
-        answer_audio = gTTS(text=ai_res_text,lang="en",slow=False)
-        answer_audio.save(answer_file_path)
-
+        text_to_speech(0,3,ai_res_text,data["lang"],answer_file_path)
         #send answer file to client
         f = open(answer_file_path,mode="rb")
         answer_audio_mp3_file = f.read()
@@ -90,12 +77,14 @@ def query(id,data):
         server.emit('answer',response,to=id)
         return
 
-    # except gTTSError:
-    #     server.emit('answer',"Error")
-    #     return
-
-
-
-
 if __name__ == "__main__":
+    # ai_response = openai.ChatCompletion.create(
+    #     model="gpt-3.5-turbo",
+    #     messages=[
+    #         {"role":"user","content":'please answer my question in language {lang}'.format(lang=data["lang"])},
+    #         {"role":"user","content":query_text}
+    #     ],
+    #     max_tokens=4000
+    # )
+    # ai_res_ text= ai_response['choices'][0]['message']['content']
     eventlet.wsgi.server(eventlet.listen(('',8000)),app)

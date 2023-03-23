@@ -47,7 +47,7 @@ export function useChat(vm_handler:VMType){
             socket.off("answer");
         }
     },[socket,vm_handler]);
-    const sendVoiceMessage = (voice:Blob) => {
+    const sendVoiceMessage = (voice:Blob,lang:string) => {
         if(socket === undefined) return;
         const bloburl = URL.createObjectURL(voice);
         vm_handler.setVoices((voices:Voice[])=>{
@@ -56,7 +56,7 @@ export function useChat(vm_handler:VMType){
         });
         // const file = new File([voice],"v.wav");
         console.log(voice)
-        socket.emit("query",voice);
+        socket.emit("query",{audio:voice,lang});
     };
     
     return {sendVoiceMessage};

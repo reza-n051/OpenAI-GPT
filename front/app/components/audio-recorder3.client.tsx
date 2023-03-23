@@ -8,7 +8,7 @@ import useAudioRecorder from '~/audio-recorder.client';
 import { useVMCon text} from '~/voice-memory';
 import { useChat } from '~/socket';
 
-export function AudioRecorder() {
+export function AudioRecorder({lang}:{lang:string}) {
     const [blobUrl , setBlobUrl] = useState<string>('');
     const [blob,setBlob] = useState<Blob|null>();
     const {voices,setVoices} = useVMContext();
@@ -27,7 +27,7 @@ export function AudioRecorder() {
     });
     const handleSendVoice = () => {
         if(blob === undefined || blob === null) return;
-        sendVoiceMessage(blob);
+        sendVoiceMessage(blob,lang);
         setBlob(null);
         setBlobUrl("");
         setMicState("record");    

@@ -2,14 +2,20 @@ import {ClientOnly} from 'remix-utils';
 import { Message } from "~/components/message";
 import {AudioRecorder} from "~/components/audio-recorder3.client";
 import { useVMCon text} from '~/voice-memory';
+import { useState } from 'react';
+import LanguageSelector from '~/components/language-selector';
 export default function Index() {
   const {voices} = useVMContext();
+  const [lang,setLang] = useState<string>('en');
   return (
     <div className="flex flex-col w-full bg-primary lg:w-1/3 mx-auto min-h-screen max-h-screen h-screen">
       <header className="flex flex-row w-full h-32 bg-secondary">
-        <span className="m-auto text-primary font-mono font-extrabold text-3xl">
+        <span className="my-auto ml-16 text-primary font-mono font-extrabold text-3xl">
           OpenAI/GPT
         </span>
+        <div className="my-auto ml-52">
+          <LanguageSelector lang={lang} setLang={setLang} />
+        </div>
       </header>
       <div className="w-full msg-container p-4 max-h-[calc(100%-14rem)] h-[calc(100%-14rem)] overflow-y-scroll flex flex-col">
 
@@ -37,7 +43,7 @@ export default function Index() {
       </div>
       <ClientOnly fallback={<p>loading .... </p>}>
         {
-          ()=> <AudioRecorder/>
+          ()=> <AudioRecorder lang={lang}/>
         }
       </ClientOnly>
       

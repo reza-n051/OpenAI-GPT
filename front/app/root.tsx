@@ -42,7 +42,7 @@ export default function App() {
         </SocketContext.Provider>
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
+        <LiveReload port={8002}/>
       </body>
     </html>
   );

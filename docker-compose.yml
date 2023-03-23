@@ -1,21 +1,29 @@
 version: '3'
 
 services:
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
   front:
     build: ./front
     volumes:
-      - ./front/:/web/
+      - ./front/:/app/
     environment:
-      - PORT=8080
+      - NODE_ENV=development
+      - REMIX_DEV_SERVER_WS_PORT=8002
+      - PORT=3000
     ports:
-      - 8080:8080  
+      - 8002:8002
+      - 3000:3000  
   back:
-    build: ./back
+    build: ./server
     volumes:
       - ./server/:/server/
     ports:
       - 8000:8000
     environment:
+      - REDIS_PORT=6379
       - OPENAI_KEY=/run/secrets/openai
     secrets:
       - openai
