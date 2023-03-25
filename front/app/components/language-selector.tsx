@@ -14,7 +14,7 @@ interface LSProps{
 }
 export default function LanguageSelector({lang,setLang}:LSProps){
     return(
-        <div className="dropdown dropdown-right text-secondary">
+        <div className="dropdown text-secondary">
             <label className="btn btn-primary m-1" tabIndex={0}>{lang}</label>
             <ul tabIndex={0} 
                 className="msg-container dropdown-content menu shadow bg-primary rounded-sm w-16 h-40 overflow-y-auto overflow-x-hidden flex flex-row scrol"

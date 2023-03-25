@@ -134,7 +134,7 @@ __export(root_exports, {
 var import_react4 = require("@remix-run/react"), import_react_hot_toast2 = require("react-hot-toast");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-C7TLPLFL.css";
+var tailwind_default = "/build/_assets/tailwind-YZJMS3DR.css";
 
 // app/socket.ts
 var import_react2 = require("react"), import_socket = require("socket.io-client"), import_react_hot_toast = require("react-hot-toast"), SocketCon text= (0, import_react2.createContext)(void 0);
@@ -331,7 +331,7 @@ var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), langs = [
   "el"
 ];
 function LanguageSelector({ lang, setLang }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "dropdown dropdown-right text-secondary", children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "dropdown text-secondary", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("label", { className: "btn btn-primary m-1", tabIndex: 0, children: lang }, void 0, !1, {
       fileName: "app/components/language-selector.tsx",
       lineNumber: 18,
@@ -372,14 +372,14 @@ function LanguageSelector({ lang, setLang }) {
 var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime");
 function Index() {
   let { voices } = useVMContext(), [lang, setLang] = (0, import_react6.useState)("en");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex flex-col w-full bg-primary lg:w-1/3 mx-auto min-h-screen max-h-screen h-screen", children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex flex-col w-full bg-primary lg:w-[45%] mx-auto min-h-screen max-h-screen h-screen", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("header", { className: "flex flex-row w-full h-32 bg-secondary", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "my-auto ml-16 text-primary font-mono font-extrabold text-3xl", children: "OpenAI/GPT" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl", children: "OpenAI/GPT" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
         lineNumber: 13,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "my-auto ml-52", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(LanguageSelector, { lang, setLang }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "my-auto ml-auto mr-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(LanguageSelector, { lang, setLang }, void 0, !1, {
         fileName: "app/routes/index.tsx",
         lineNumber: 17,
         columnNumber: 11
@@ -458,7 +458,7 @@ function Index() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "fe29cebb", entry: { module: "/build/entry.client-7E2ZW3GE.js", imports: ["/build/_shared/chunk-KDYTP4YU.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-TFV7TSNS.js", imports: ["/build/_shared/chunk-4VGX42PY.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-7APLJY4Q.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-FE29CEBB.js" };
+var assets_manifest_default = { version: "aafaf4dd", entry: { module: "/build/entry.client-7E2ZW3GE.js", imports: ["/build/_shared/chunk-KDYTP4YU.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-Z2JISB2X.js", imports: ["/build/_shared/chunk-4VGX42PY.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-CXO3X5YK.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-AAFAF4DD.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public\\build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

@@ -1,7 +1,7 @@
 eventlet==0.33.3
 python-engineio==4.3.4
 python-socketio==5.7.2
-redis==4.5.1
+revChatGPT==4.0.6.1
 openai==0.27.2
 SpeechRecognition==3.9.0
 gTTS==2.3.1

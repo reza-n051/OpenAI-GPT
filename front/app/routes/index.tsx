@@ -8,12 +8,12 @@ export default function Index() {
   const {voices} = useVMContext();
   const [lang,setLang] = useState<string>('en');
   return (
-    <div className="flex flex-col w-full bg-primary lg:w-1/3 mx-auto min-h-screen max-h-screen h-screen">
+    <div className="flex flex-col w-full bg-primary lg:w-[45%] mx-auto min-h-screen max-h-screen h-screen">
       <header className="flex flex-row w-full h-32 bg-secondary">
-        <span className="my-auto ml-16 text-primary font-mono font-extrabold text-3xl">
+        <span className="my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl">
           OpenAI/GPT
         </span>
-        <div className="my-auto ml-52">
+        <div className="my-auto ml-auto mr-6">
           <LanguageSelector lang={lang} setLang={setLang} />
         </div>
       </header>

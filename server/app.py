@@ -3,9 +3,13 @@ import socketio
 import openai
 from uuid import uuid4
 from revChatGPT.V3 import Chatbot
-from .text_to_speech import text_to_speech
-# openai.api_key = os.environ['OPENAI_KEY']
-openai.api_key = "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"
+from dotenv import load_dotenv
+import os
+from tts.text_to_speech import text_to_speech
+
+load_dotenv()
+openai.api_key = os.environ['OPENAI_KEY']
+api_key = os.environ['OPENAI_KEY']
 FILE_STORE_PATH = "./data/"
 server = socketio.Server(cors_allowed_origins='*',max_http_buffer_size=100000000)
 app = socketio.WSGIApp(server)
@@ -17,7 +21,6 @@ def connect(_,__):
 @server.event
 def disconnect(_):
     print("disconnecting ...")
-    # redis.delete(id)
 
 @server.event
 def query(id,data):
