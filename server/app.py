@@ -5,11 +5,12 @@ from uuid import uuid4
 from revChatGPT.V3 import Chatbot
 from dotenv import load_dotenv
 import os
-from tts.text_to_speech import text_to_speech
+from tts.text_to_speech import text_to_speech,text_to_speech_persian
 
 load_dotenv()
 openai.api_key = os.environ['OPENAI_KEY']
 api_key = os.environ['OPENAI_KEY']
+ariana_key = os.environ['ARIANA_KEY']
 FILE_STORE_PATH = "./data/"
 server = socketio.Server(cors_allowed_origins='*',max_http_buffer_size=100000000)
 app = socketio.WSGIApp(server)
@@ -54,7 +55,7 @@ def query(id,data):
 
     #chat with chatGPT
     try:
-        chatbot = Chatbot(api_key="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")
+        chatbot = Chatbot(api_key=api_key)
         ai_res_ text= chatbot.ask('please answer my question in lnaguage {lang} . {q}'.format(lang=data["lang"],q=query_text))
         print('answer :: {a}'.format(a=ai_res_text))
         ai_res_is_successful = True
@@ -67,7 +68,10 @@ def query(id,data):
         return
     
     try:
-        text_to_speech(0,3,ai_res_text,data["lang"],answer_file_path)
+        if(data["lang"] == 'fa'):
+            text_to_speech_persian(0,3,ai_res_text,data["lang"],answer_file_path,ariana_key)            
+        else:
+            text_to_speech(0,3,ai_res_text,data["lang"],answer_file_path)
         #send answer file to client
         f = open(answer_file_path,mode="rb")
         answer_audio_mp3_file = f.read()
