@@ -13,7 +13,8 @@ export function useSocketContext(){
 export function useSocket(){
     const [socket,setSocket] = useState<Socket>();
     useEffect(()=>{
-        const socket = io("http://localhost:8000/");
+        const socket = io(`${window.ENV.SERVER_IP}:${window.ENV.SERVER_PORT}/`);
+        // const socket = io("http://localhost:8000/");
         setSocket(socket);
         return ()=>{
             socket.close();

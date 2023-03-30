@@ -1,10 +1,15 @@
 FROM python:3.10-alpine
 
-WORKDIR /server
+RUN apt-get update && apt-get install build-essential -y
+
+WORKDIR /usr/src/app
 
 COPY requirements.txt requirements.txt
 
-RUN pip3 install -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
-CMD ["python3","app.py"]
+COPY . .
+
+CMD ["python","app.py"]
 

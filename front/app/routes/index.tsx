@@ -8,7 +8,7 @@ export default function Index() {
   const {voices} = useVMContext();
   const [lang,setLang] = useState<string>('en');
   return (
-    <div className="flex flex-col w-full bg-primary lg:w-[45%] mx-auto min-h-screen max-h-screen h-screen">
+    <div className="flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen">
       <header className="flex flex-row w-full h-32 bg-secondary">
         <span className="my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl">
           OpenAI/GPT
@@ -23,7 +23,7 @@ export default function Index() {
         voices.length === 0 ? 
         <div className="text-secondary font-mono font-extrabold flex flex-col">
           <p className='text-3xl mx-auto mt-52'>WELCOME</p>
-          <p className='text-xl  mx-auto mt-12'>For Start Chatting with GPT-3 Click On Microphone ...</p>
+          <p className='text-xl  mx-auto mt-12'>For Start Chatting with ChatGPT Click On Microphone ...</p>
         </div>
         :
         <>

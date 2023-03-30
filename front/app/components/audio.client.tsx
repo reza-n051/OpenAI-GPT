@@ -54,7 +54,7 @@ function AudioBar({
                 step="any"
                 onChange={handleChange} 
                 value={`${duration !== Infinity? time/duration*100:time/50*100}`}  
-                className="range range-xs range-primary w-16 sm:w-32" 
+                className="range range-xs range-primary w-16 min-[335px]:w-24 min-[380px]:w-36 " 
             />
         </div>
     )

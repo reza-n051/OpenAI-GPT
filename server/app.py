@@ -5,13 +5,17 @@ from uuid import uuid4
 from revChatGPT.V3 import Chatbot
 from dotenv import load_dotenv
 import os
-from tts.text_to_speech import text_to_speech,text_to_speech_persian
+from tts.text_to_speech import text_to_speech
+from stt.speech_to_ textimport speech_to_text
 
+#init application
 load_dotenv()
 openai.api_key = os.environ['OPENAI_KEY']
 api_key = os.environ['OPENAI_KEY']
 ariana_key = os.environ['ARIANA_KEY']
-FILE_STORE_PATH = "./data/"
+FILE_STORE_PATH = os.environ['DATA_PATH']
+APP_IP = os.environ['APP_IP']
+APP_PORT = os.environ['APP_PORT']
 server = socketio.Server(cors_allowed_origins='*',max_http_buffer_size=100000000)
 app = socketio.WSGIApp(server)
 
@@ -25,14 +29,17 @@ def disconnect(_):
 
 @server.event
 def query(id,data):
+
     response = {
         "status":False,
         "data":"Try Again ..."
     }
-    #save query file in memory
+
     filename = uuid4()
     query_file_path =  '{path}{filename}-query.wav'.format( path=FILE_STORE_PATH,filename=filename)
     answer_file_path = '{path}{filename}-answer.mp3'.format(path=FILE_STORE_PATH,filename=filename)
+
+    #save query file in memory
     try:
         with open(query_file_path,mode='bx') as file:
             file.write(data["audio"])
@@ -43,13 +50,10 @@ def query(id,data):
 
     try:
         #read file and convert it to text
-        x = open(query_file_path,"rb")
-        query_ text= openai.Audio.transcribe("whisper-1",x,language=data["lang"])["text"]
-        
+        query_ text= speech_to_text(query_file_path,data["lang"])
         print(query_text) 
 
     except Exception as e:
-        print(e)
         server.emit('answer',response,to=id)
         return
 
@@ -68,13 +72,11 @@ def query(id,data):
         return
     
     try:
-        if(data["lang"] == 'fa'):
-            text_to_speech_persian(0,3,ai_res_text,data["lang"],answer_file_path,ariana_key)            
-        else:
-            text_to_speech(0,3,ai_res_text,data["lang"],answer_file_path)
+        text_to_speech(0,3,ai_res_text,data["lang"],answer_file_path,ariana_key)            
         #send answer file to client
         f = open(answer_file_path,mode="rb")
         answer_audio_mp3_file = f.read()
+        f.close()
         response = {
             "status":True,
             "data":answer_audio_mp3_file
@@ -83,15 +85,13 @@ def query(id,data):
     except Exception as e:
         server.emit('answer',response,to=id)
         return
+    try:
+        os.remove(query_file_path)
+        os.remove(answer_file_path)
+    except Exception as e:
+        print(str(e))        
+    return
 
 if __name__ == "__main__":
-    # ai_response = openai.ChatCompletion.create(
-    #     model="gpt-3.5-turbo",
-    #     messages=[
-    #         {"role":"user","content":'please answer my question in language {lang}'.format(lang=data["lang"])},
-    #         {"role":"user","content":query_text}
-    #     ],
-    #     max_tokens=4000
-    # )
-    # ai_res_ text= ai_response['choices'][0]['message']['content']
-    eventlet.wsgi.server(eventlet.listen(('',8000)),app)
+    
+    eventlet.wsgi.server(eventlet.listen((APP_IP,int(APP_PORT))),app)

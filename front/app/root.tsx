@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import { json, LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
   LiveReload,
@@ -6,6 +6,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
 import {Toaster} from 'react-hot-toast';
 import stylesheet from "~/tailwind.css";
@@ -14,7 +15,14 @@ import { useSocket,SocketCon text} from "./socket";
 import type { Voice } from "./voice-memory";
 import { VMCon text} from "./voice-memory";
 import { useState } from "react";
-
+declare global{
+  interface Window{
+    ENV:{
+      SERVER_IP:string;
+      SERVER_PORT:string;
+    }
+  }
+}
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
@@ -24,7 +32,18 @@ export const meta: MetaFunction = () => ({
   viewport: "width=device-width,initial-scale=1",
 });
 
+export async function loader(){
+  return json({
+    ENV:{
+      SERVER_PORT:process.env.SERVER_PORT,
+      SERVER_IP:process.env.SERVER_IP,
+    }
+  })
+}
+
 export default function App() {
+  const data = useLoaderData<typeof loader>();
+
   const socket:Socket|undefined = useSocket();
   const [voices,setVoices] = useState<Voice[]>([]);
   return (
@@ -41,6 +60,13 @@ export default function App() {
           </VMContext.Provider>
         </SocketContext.Provider>
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(
+              data.ENV
+            )}`,
+          }}
+        />
         <Scripts />
         <LiveReload port={8002}/>
       </body>

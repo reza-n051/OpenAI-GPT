@@ -55,7 +55,7 @@ export function AudioRecorder({lang}:{lang:string}) {
         return (
             <div className="flex flex-row w-full h-12 bg-secondary text-black">
                 <div className="my-auto">
-                    <div className="h-8 w-8 ml-0 sm:ml-52">
+                    <div className="h-8 w-8 ml-0 sm:ml-52 lg:ml-16 2xl:ml-20">
                         <AiOutlineDelete onClick={handleDelete} size={25} className="fill-primary hover:fill-third" />
                     </div>
                 </div>
