@@ -26,7 +26,7 @@ export function Message(
                 </div>    
             </div>
             <div className='chat-header font-mono text-xl text-secondary'>
-            {username === msgOwnerUsername?"You":"GPT"}
+            {username === msgOwnerUsername?"You":"ChatGPT"}
             </div>  
             <div className='chat-bubble  bg-secondary text-primary'>
                 <Audio src={voiceSrc}/>

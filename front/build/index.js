@@ -289,7 +289,7 @@ function Message({
       lineNumber: 18,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "chat-header font-mono text-xl text-secondary", children: username === msgOwnerUsername ? "You" : "GPT" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)("div", { className: "chat-header font-mono text-xl text-secondary", children: username === msgOwnerUsername ? "You" : "ChatGPT" }, void 0, !1, {
       fileName: "app/components/message.tsx",
       lineNumber: 28,
       columnNumber: 13
@@ -402,7 +402,7 @@ function Index() {
   let { voices } = useVMContext(), [lang, setLang] = (0, import_react6.useState)("en");
   return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("header", { className: "flex flex-row w-full h-32 bg-secondary", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl", children: "OpenAI/GPT" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl", children: "OpenAI/ChatGPT" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
         lineNumber: 13,
         columnNumber: 9
@@ -486,7 +486,7 @@ function Index() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "66cbd08c", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-A4L6ZB6T.js", imports: ["/build/_shared/chunk-Q4KOK4IL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-RM7FPOIP.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-66CBD08C.js" };
+var assets_manifest_default = { version: "39e61ee3", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-A4L6ZB6T.js", imports: ["/build/_shared/chunk-Q4KOK4IL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-NJAXRMSF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-39E61EE3.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public\\build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

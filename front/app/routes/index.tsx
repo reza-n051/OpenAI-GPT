@@ -11,7 +11,7 @@ export default function Index() {
     <div className="flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen">
       <header className="flex flex-row w-full h-32 bg-secondary">
         <span className="my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl">
-          OpenAI/GPT
+          OpenAI/ChatGPT
         </span>
         <div className="my-auto ml-auto mr-6">
           <LanguageSelector lang={lang} setLang={setLang} />
