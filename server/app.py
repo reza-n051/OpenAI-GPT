@@ -6,7 +6,7 @@ from revChatGPT.V3 import Chatbot
 from dotenv import load_dotenv
 import os
 from tts.text_to_speech import text_to_speech
-from stt.speech_to_ textimport speech_to_text
+from stt.speech_to_text import speech_to_text
 
 #init application
 load_dotenv()
@@ -50,7 +50,7 @@ def query(id,data):
 
     try:
         #read file and convert it to text
-        query_ text= speech_to_text(query_file_path,data["lang"])
+        query_text = speech_to_text(query_file_path,data["lang"])
         print(query_text) 
 
     except Exception as e:
@@ -60,14 +60,14 @@ def query(id,data):
     #chat with chatGPT
     try:
         chatbot = Chatbot(api_key=api_key)
-        ai_res_ text= chatbot.ask(
+        ai_res_text = chatbot.ask(
             'please answer my question in lnaguage {lang} . {q}'.format(lang=data["lang"],q=query_text)
         )
         print('answer :: {a}'.format(a=ai_res_text))
         ai_res_is_successful = True
     except Exception as e:
         print(e)
-        ai_res_ text= str(e)
+        ai_res_text = str(e)
         ai_res_is_successful = False
     if(ai_res_is_successful == False):
         server.emit('answer',response,to=id)

@@ -5,7 +5,7 @@ def speech_to_text(
         language
     ):
     x = open(text_path,"rb")
-    query_ text= openai.Audio.transcribe(
+    query_text = openai.Audio.transcribe(
         model="whisper-1",
         file=x,
         language=language

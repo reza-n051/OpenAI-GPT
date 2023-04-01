@@ -135,20 +135,20 @@ __export(root_exports, {
 var import_node2 = require("@remix-run/node"), import_react5 = require("@remix-run/react"), import_react_hot_toast2 = require("react-hot-toast");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-ZRZKUOVD.css";
+var tailwind_default = "/build/_assets/tailwind-CUEX62CE.css";
 
 // app/socket.ts
 var import_react3 = require("react"), import_socket = require("socket.io-client"), import_react_hot_toast = require("react-hot-toast");
 
 // app/loading.ts
-var import_react2 = require("react"), LoadingCon text= (0, import_react2.createContext)({ isLoading: !1, setIsLoading: () => {
+var import_react2 = require("react"), LoadingContext = (0, import_react2.createContext)({ isLoading: !1, setIsLoading: () => {
 } });
 function useLoadingContext() {
   return (0, import_react2.useContext)(LoadingContext);
 }
 
 // app/socket.ts
-var SocketCon text= (0, import_react3.createContext)(void 0);
+var SocketContext = (0, import_react3.createContext)(void 0);
 function useSocket() {
   let [socket, setSocket] = (0, import_react3.useState)();
   return (0, import_react3.useEffect)(() => {
@@ -160,7 +160,7 @@ function useSocket() {
 }
 
 // app/voice-memory.ts
-var import_react4 = require("react"), VMCon text= (0, import_react4.createContext)({ voices: [], setVoices: () => {
+var import_react4 = require("react"), VMContext = (0, import_react4.createContext)({ voices: [], setVoices: () => {
 } });
 function useVMContext() {
   return (0, import_react4.useContext)(VMContext);
@@ -520,7 +520,7 @@ function Index() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "c962db34", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GD4CCTRM.js", imports: ["/build/_shared/chunk-VHSI2ZSL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-MHPJQJKX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-C962DB34.js" };
+var assets_manifest_default = { version: "a47e7f3b", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-TU4BLQTF.js", imports: ["/build/_shared/chunk-VHSI2ZSL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-MHPJQJKX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-A47E7F3B.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public\\build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

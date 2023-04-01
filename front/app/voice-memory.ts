@@ -1,4 +1,4 @@
-import { createContext, useCon text} from "react";
+import { createContext, useContext } from "react";
 
 export interface Voice{
     id:string;
@@ -10,7 +10,7 @@ export interface VMType {
     setVoices:any;
 }
 
-export const VMCon text= createContext<VMType>({voices:[],setVoices:()=>{}});
+export const VMContext = createContext<VMType>({voices:[],setVoices:()=>{}});
 
 export function useVMContext(){
     return useContext(VMContext);

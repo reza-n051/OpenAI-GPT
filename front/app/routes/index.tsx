@@ -1,10 +1,10 @@
 import {ClientOnly} from 'remix-utils';
 import { Message } from "~/components/message";
 import {AudioRecorder} from "~/components/audio-recorder3.client";
-import { useVMCon text} from '~/voice-memory';
+import { useVMContext } from '~/voice-memory';
 import { useState } from 'react';
 import LanguageSelector from '~/components/language-selector';
-import { useLoadingCon text} from '~/loading';
+import { useLoadingContext } from '~/loading';
 export default function Index() {
   const {voices} = useVMContext();
   const {isLoading} = useLoadingContext();

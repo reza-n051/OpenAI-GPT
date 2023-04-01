@@ -3,9 +3,9 @@ import type {Socket} from 'socket.io-client';
 import {io} from 'socket.io-client';
 import type { VMType, Voice } from './voice-memory';
 import {toast} from 'react-hot-toast';
-import { useLoadingCon text} from "./loading";
+import { useLoadingContext } from "./loading";
 
-export const SocketCon text= createContext<Socket|undefined>(undefined);
+export const SocketContext = createContext<Socket|undefined>(undefined);
 
 export function useSocketContext(){
     return useContext(SocketContext);

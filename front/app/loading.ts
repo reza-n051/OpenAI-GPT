@@ -5,7 +5,7 @@ export interface LoadingContextType{
     setIsLoading:any;
 }
 
-export const LoadingCon text= createContext<LoadingContextType>({isLoading:false,setIsLoading:()=>{}});
+export const LoadingContext = createContext<LoadingContextType>({isLoading:false,setIsLoading:()=>{}});
 
 export function useLoadingContext(){
     return useContext(LoadingContext);

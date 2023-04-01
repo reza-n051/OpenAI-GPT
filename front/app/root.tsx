@@ -11,10 +11,10 @@ import {
 import {Toaster} from 'react-hot-toast';
 import stylesheet from "~/tailwind.css";
 import type { Socket } from 'socket.io-client';
-import { useSocket,SocketCon text} from "./socket";
-import { LoadingCon text} from "./loading";
+import { useSocket,SocketContext } from "./socket";
+import { LoadingContext } from "./loading";
 import type { Voice } from "./voice-memory";
-import { VMCon text} from "./voice-memory";
+import { VMContext } from "./voice-memory";
 import { useState } from "react";
 declare global{
   interface Window{

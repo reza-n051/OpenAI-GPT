@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
 import Audio from '~/components/audio.client';
 import {AiOutlineSend} from 'react-icons/ai';
 import useAudioRecorder from '~/audio-recorder.client';
-import { useVMCon text} from '~/voice-memory';
+import { useVMContext } from '~/voice-memory';
 import { useChat } from '~/socket';
 
 export function AudioRecorder({lang}:{lang:string}) {
