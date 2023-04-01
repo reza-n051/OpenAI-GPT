@@ -4,14 +4,19 @@ import {AudioRecorder} from "~/components/audio-recorder3.client";
 import { useVMCon text} from '~/voice-memory';
 import { useState } from 'react';
 import LanguageSelector from '~/components/language-selector';
+import { useLoadingCon text} from '~/loading';
 export default function Index() {
   const {voices} = useVMContext();
+  const {isLoading} = useLoadingContext();
   const [lang,setLang] = useState<string>('en');
   return (
     <div className="flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen">
       <header className="flex flex-row w-full h-32 bg-secondary">
-        <span className="my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl">
-          OpenAI/ChatGPT
+        <span className="flex flex-col my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl h-10">
+          <span className="h-8">OpenAI/ChatGPT</span>
+          {
+            isLoading ? <progress className="progress progress-info bg-primary w-[100%] h-2"></progress> : <></>
+          }
         </span>
         <div className="my-auto ml-auto mr-6">
           <LanguageSelector lang={lang} setLang={setLang} />
@@ -22,8 +27,9 @@ export default function Index() {
       {
         voices.length === 0 ? 
         <div className="text-secondary font-mono font-extrabold flex flex-col">
-          <p className='text-3xl mx-auto mt-52'>WELCOME</p>
-          <p className='text-xl  mx-auto mt-12'>For Start Chatting with ChatGPT Click On Microphone ...</p>
+          <p className='text-2xl mx-auto mt-32'>WELCOME</p>
+          <p className='sm:text-xl  mx-auto mt-12'>To Chatting Click On Microphone</p>
+          <p className='text-sm min-[380px]:text-base sm:text-xl  mx-auto mt-12'>Please Wait Until The Answer Is Ready</p>
         </div>
         :
         <>

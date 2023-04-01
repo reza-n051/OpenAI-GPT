@@ -3,6 +3,7 @@ import type {Socket} from 'socket.io-client';
 import {io} from 'socket.io-client';
 import type { VMType, Voice } from './voice-memory';
 import {toast} from 'react-hot-toast';
+import { useLoadingCon text} from "./loading";
 
 export const SocketCon text= createContext<Socket|undefined>(undefined);
 
@@ -13,8 +14,12 @@ export function useSocketContext(){
 export function useSocket(){
     const [socket,setSocket] = useState<Socket>();
     useEffect(()=>{
-        const socket = io(`${window.ENV.SERVER_IP}:${window.ENV.SERVER_PORT}/`);
-        // const socket = io("http://localhost:8000/");
+        let socket:Socket;
+        if(process.env.NODE_ENV == "production"){
+            socket = io(`${window.ENV.SERVER_IP}/`);
+        }else{
+            socket = io(`${window.ENV.SERVER_IP}:${window.ENV.SERVER_PORT}/`);
+        }
         setSocket(socket);
         return ()=>{
             socket.close();
@@ -24,6 +29,7 @@ export function useSocket(){
 }
 export function useChat(vm_handler:VMType){
     const socket = useSocketContext();
+    const {setIsLoading}  = useLoadingContext();
     useEffect(()=>{
         if(socket === undefined) return;
         
@@ -43,6 +49,7 @@ export function useChat(vm_handler:VMType){
                 const v:Voice = {blobUrl:bloburl,id:'0',sender:'0'};
                 return [...voices,v]
             });
+            setIsLoading(false);
         });
         return () => {
             socket.off("answer");
@@ -50,6 +57,7 @@ export function useChat(vm_handler:VMType){
     },[socket,vm_handler]);
     const sendVoiceMessage = (voice:Blob,lang:string) => {
         if(socket === undefined) return;
+        setIsLoading(true);
         const bloburl = URL.createObjectURL(voice);
         vm_handler.setVoices((voices:Voice[])=>{
             const v:Voice = {blobUrl:bloburl,id:'1',sender:'1'};

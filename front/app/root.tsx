@@ -12,6 +12,7 @@ import {Toaster} from 'react-hot-toast';
 import stylesheet from "~/tailwind.css";
 import type { Socket } from 'socket.io-client';
 import { useSocket,SocketCon text} from "./socket";
+import { LoadingCon text} from "./loading";
 import type { Voice } from "./voice-memory";
 import { VMCon text} from "./voice-memory";
 import { useState } from "react";
@@ -45,6 +46,8 @@ export default function App() {
   const data = useLoaderData<typeof loader>();
 
   const socket:Socket|undefined = useSocket();
+
+  const [isLoading,setIsLoading] = useState<boolean>(false);
   const [voices,setVoices] = useState<Voice[]>([]);
   return (
     <html lang="en">
@@ -55,8 +58,10 @@ export default function App() {
       <body>
         <SocketContext.Provider value={socket}>
           <VMContext.Provider value={{voices,setVoices}}>
-            <Outlet />
-            <Toaster/>
+            <LoadingContext.Provider value={{isLoading,setIsLoading}}>
+              <Outlet />
+              <Toaster/>
+            </LoadingContext.Provider>
           </VMContext.Provider>
         </SocketContext.Provider>
         <ScrollRestoration />

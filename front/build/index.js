@@ -132,32 +132,42 @@ __export(root_exports, {
   loader: () => loader,
   meta: () => meta
 });
-var import_node2 = require("@remix-run/node"), import_react4 = require("@remix-run/react"), import_react_hot_toast2 = require("react-hot-toast");
+var import_node2 = require("@remix-run/node"), import_react5 = require("@remix-run/react"), import_react_hot_toast2 = require("react-hot-toast");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-5USEJMHF.css";
+var tailwind_default = "/build/_assets/tailwind-ZRZKUOVD.css";
 
 // app/socket.ts
-var import_react2 = require("react"), import_socket = require("socket.io-client"), import_react_hot_toast = require("react-hot-toast"), SocketCon text= (0, import_react2.createContext)(void 0);
+var import_react3 = require("react"), import_socket = require("socket.io-client"), import_react_hot_toast = require("react-hot-toast");
+
+// app/loading.ts
+var import_react2 = require("react"), LoadingCon text= (0, import_react2.createContext)({ isLoading: !1, setIsLoading: () => {
+} });
+function useLoadingContext() {
+  return (0, import_react2.useContext)(LoadingContext);
+}
+
+// app/socket.ts
+var SocketCon text= (0, import_react3.createContext)(void 0);
 function useSocket() {
-  let [socket, setSocket] = (0, import_react2.useState)();
-  return (0, import_react2.useEffect)(() => {
-    let socket2 = (0, import_socket.io)(`${window.ENV.SERVER_IP}:${window.ENV.SERVER_PORT}/`);
-    return setSocket(socket2), () => {
+  let [socket, setSocket] = (0, import_react3.useState)();
+  return (0, import_react3.useEffect)(() => {
+    let socket2;
+    return socket2 = (0, import_socket.io)(`${window.ENV.SERVER_IP}:${window.ENV.SERVER_PORT}/`), setSocket(socket2), () => {
       socket2.close();
     };
   }, []), socket;
 }
 
 // app/voice-memory.ts
-var import_react3 = require("react"), VMCon text= (0, import_react3.createContext)({ voices: [], setVoices: () => {
+var import_react4 = require("react"), VMCon text= (0, import_react4.createContext)({ voices: [], setVoices: () => {
 } });
 function useVMContext() {
-  return (0, import_react3.useContext)(VMContext);
+  return (0, import_react4.useContext)(VMContext);
 }
 
 // app/root.tsx
-var import_react5 = require("react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), links = () => [
+var import_react6 = require("react"), import_jsx_dev_runtime2 = require("react/jsx-dev-runtime"), links = () => [
   { rel: "stylesheet", href: tailwind_default }
 ], meta = () => ({
   charset: "utf-8",
@@ -173,48 +183,52 @@ async function loader() {
   });
 }
 function App() {
-  let data = (0, import_react4.useLoaderData)(), socket = useSocket(), [voices, setVoices] = (0, import_react5.useState)([]);
+  let data = (0, import_react5.useLoaderData)(), socket = useSocket(), [isLoading, setIsLoading] = (0, import_react6.useState)(!1), [voices, setVoices] = (0, import_react6.useState)([]);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("html", { lang: "en", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react4.Meta, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react5.Meta, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 52,
+        lineNumber: 55,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react4.Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react5.Links, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 53,
+        lineNumber: 56,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 51,
+      lineNumber: 54,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(SocketContext.Provider, { value: socket, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(VMContext.Provider, { value: { voices, setVoices }, children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react4.Outlet, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(SocketContext.Provider, { value: socket, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(VMContext.Provider, { value: { voices, setVoices }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(LoadingContext.Provider, { value: { isLoading, setIsLoading }, children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react5.Outlet, {}, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 58,
-          columnNumber: 13
+          lineNumber: 62,
+          columnNumber: 15
         }, this),
         /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react_hot_toast2.Toaster, {}, void 0, !1, {
           fileName: "app/root.tsx",
-          lineNumber: 59,
-          columnNumber: 13
+          lineNumber: 63,
+          columnNumber: 15
         }, this)
       ] }, void 0, !0, {
         fileName: "app/root.tsx",
-        lineNumber: 57,
+        lineNumber: 61,
+        columnNumber: 13
+      }, this) }, void 0, !1, {
+        fileName: "app/root.tsx",
+        lineNumber: 60,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 56,
+        lineNumber: 59,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react4.ScrollRestoration, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react5.ScrollRestoration, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 62,
+        lineNumber: 67,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
@@ -230,29 +244,29 @@ function App() {
         !1,
         {
           fileName: "app/root.tsx",
-          lineNumber: 63,
+          lineNumber: 68,
           columnNumber: 9
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react4.Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react5.Scripts, {}, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 70,
+        lineNumber: 75,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react4.LiveReload, { port: 8002 }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_react5.LiveReload, { port: 8002 }, void 0, !1, {
         fileName: "app/root.tsx",
-        lineNumber: 71,
+        lineNumber: 76,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.tsx",
-      lineNumber: 55,
+      lineNumber: 58,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.tsx",
-    lineNumber: 50,
+    lineNumber: 53,
     columnNumber: 5
   }, this);
 }
@@ -312,7 +326,7 @@ function Message({
 
 // app/routes/index.tsx
 var import_audio_recorder3 = __toESM(require_audio_recorder3());
-var import_react6 = require("react");
+var import_react7 = require("react");
 
 // app/components/language-selector.tsx
 var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), langs = [
@@ -399,42 +413,62 @@ function LanguageSelector({ lang, setLang }) {
 // app/routes/index.tsx
 var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime");
 function Index() {
-  let { voices } = useVMContext(), [lang, setLang] = (0, import_react6.useState)("en");
+  let { voices } = useVMContext(), { isLoading } = useLoadingContext(), [lang, setLang] = (0, import_react7.useState)("en");
   return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("header", { className: "flex flex-row w-full h-32 bg-secondary", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl", children: "OpenAI/ChatGPT" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "flex flex-col my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl h-10", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "h-8", children: "OpenAI/ChatGPT" }, void 0, !1, {
+          fileName: "app/routes/index.tsx",
+          lineNumber: 16,
+          columnNumber: 11
+        }, this),
+        isLoading ? /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("progress", { className: "progress progress-info bg-primary w-[100%] h-2" }, void 0, !1, {
+          fileName: "app/routes/index.tsx",
+          lineNumber: 18,
+          columnNumber: 25
+        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(import_jsx_dev_runtime5.Fragment, {}, void 0, !1, {
+          fileName: "app/routes/index.tsx",
+          lineNumber: 18,
+          columnNumber: 108
+        }, this)
+      ] }, void 0, !0, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 13,
+        lineNumber: 15,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "my-auto ml-auto mr-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(LanguageSelector, { lang, setLang }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 17,
+        lineNumber: 22,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 16,
+        lineNumber: 21,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 12,
+      lineNumber: 14,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "w-full msg-container p-4 max-h-[calc(100%-14rem)] h-[calc(100%-14rem)] overflow-y-scroll flex flex-col", children: voices.length === 0 ? /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "text-secondary font-mono font-extrabold flex flex-col", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-3xl mx-auto mt-52", children: "WELCOME" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-2xl mx-auto mt-32", children: "WELCOME" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 25,
+        lineNumber: 30,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-xl  mx-auto mt-12", children: "For Start Chatting with ChatGPT Click On Microphone ..." }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "sm:text-xl  mx-auto mt-12", children: "To Chatting Click On Microphone" }, void 0, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 26,
+        lineNumber: 31,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { className: "text-sm min-[380px]:text-base sm:text-xl  mx-auto mt-12", children: "Please Wait Until The Answer Is Ready" }, void 0, !1, {
+        fileName: "app/routes/index.tsx",
+        lineNumber: 32,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 24,
+      lineNumber: 29,
       columnNumber: 9
     }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(import_jsx_dev_runtime5.Fragment, { children: voices.map(
       (voice) => /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "my-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
@@ -447,46 +481,46 @@ function Index() {
         !1,
         {
           fileName: "app/routes/index.tsx",
-          lineNumber: 33,
+          lineNumber: 39,
           columnNumber: 17
         },
         this
       ) }, voice.id, !1, {
         fileName: "app/routes/index.tsx",
-        lineNumber: 32,
+        lineNumber: 38,
         columnNumber: 15
       }, this)
     ) }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 29,
+      lineNumber: 35,
       columnNumber: 9
     }, this) }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 20,
+      lineNumber: 25,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(import_remix_utils.ClientOnly, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("p", { children: "loading .... " }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 44,
+      lineNumber: 50,
       columnNumber: 29
     }, this), children: () => /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(import_audio_recorder3.AudioRecorder, { lang }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 46,
+      lineNumber: 52,
       columnNumber: 16
     }, this) }, void 0, !1, {
       fileName: "app/routes/index.tsx",
-      lineNumber: 44,
+      lineNumber: 50,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/index.tsx",
-    lineNumber: 11,
+    lineNumber: 13,
     columnNumber: 5
   }, this);
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "39e61ee3", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-A4L6ZB6T.js", imports: ["/build/_shared/chunk-Q4KOK4IL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-NJAXRMSF.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-39E61EE3.js" };
+var assets_manifest_default = { version: "c962db34", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-GD4CCTRM.js", imports: ["/build/_shared/chunk-VHSI2ZSL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-MHPJQJKX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-C962DB34.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public\\build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

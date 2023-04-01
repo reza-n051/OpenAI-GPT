@@ -60,7 +60,9 @@ def query(id,data):
     #chat with chatGPT
     try:
         chatbot = Chatbot(api_key=api_key)
-        ai_res_ text= chatbot.ask('please answer my question in lnaguage {lang} . {q}'.format(lang=data["lang"],q=query_text))
+        ai_res_ text= chatbot.ask(
+            'please answer my question in lnaguage {lang} . {q}'.format(lang=data["lang"],q=query_text)
+        )
         print('answer :: {a}'.format(a=ai_res_text))
         ai_res_is_successful = True
     except Exception as e:
@@ -93,5 +95,4 @@ def query(id,data):
     return
 
 if __name__ == "__main__":
-    
     eventlet.wsgi.server(eventlet.listen((APP_IP,int(APP_PORT))),app)
