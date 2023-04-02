@@ -8,7 +8,7 @@ import { useLoadingContext } from '~/loading';
 export default function Index() {
   const {voices} = useVMContext();
   const {isLoading} = useLoadingContext();
-  const [lang,setLang] = useState<string>('english');
+  const [lang,setLang] = useState<string>('en');
   return (
     <div className="flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen">
       <header className="flex flex-row w-full h-32 bg-secondary">
@@ -34,8 +34,8 @@ export default function Index() {
         :
         <>
           {
-            voices.map((voice)=>
-              <div key={voice.id} className="my-4">
+            voices.map((voice,index)=>
+              <div key={index} className="my-4">
                 <Message
                   msgOwnerUsername={voice.sender}
                   voiceSrc={voice.blobUrl}

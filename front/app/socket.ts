@@ -4,6 +4,7 @@ import {io} from 'socket.io-client';
 import type { VMType, Voice } from './voice-memory';
 import {toast} from 'react-hot-toast';
 import { useLoadingContext } from "./loading";
+import { isoToText } from "./language-util";
 
 export const SocketContext = createContext<Socket|undefined>(undefined);
 
@@ -37,10 +38,10 @@ export function useChat(vm_handler:VMType){
             const status = data["status"];
             if(status === false){
                 toast.error("Try Again ...");
+                setIsLoading(false);
                 return;
             }
             const buffer = data["data"];
-            console.log(data)
             //data is arrayBuffer.
             //i convert to blob
             const blob = new Blob([buffer]);
@@ -55,9 +56,10 @@ export function useChat(vm_handler:VMType){
             socket.off("answer");
         }
     },[socket,vm_handler]);
-    const sendVoiceMessage = (voice:Blob,lang:string) => {
+    const sendVoiceMessage = (voice:Blob,iso_lang:string) => {
         if(socket === undefined) return;
         setIsLoading(true);
+        const text_lang = isoToText(iso_lang);
         const bloburl = URL.createObjectURL(voice);
         vm_handler.setVoices((voices:Voice[])=>{
             const v:Voice = {blobUrl:bloburl,id:'1',sender:'1'};
@@ -65,7 +67,7 @@ export function useChat(vm_handler:VMType){
         });
         // const file = new File([voice],"v.wav");
         console.log(voice)
-        socket.emit("query",{audio:voice,lang});
+        socket.emit("query",{audio:voice,iso_language:iso_lang,text_language:text_lang});
     };
     
     return {sendVoiceMessage};

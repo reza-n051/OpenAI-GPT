@@ -29,7 +29,6 @@ def disconnect(_):
 
 @server.event
 def query(id,data):
-
     response = {
         "status":False,
         "data":"Try Again ..."
@@ -50,7 +49,7 @@ def query(id,data):
 
     try:
         #read file and convert it to text
-        query_text = speech_to_text(query_file_path,data["lang"])
+        query_text = speech_to_text(query_file_path,data["iso_language"])
         print(query_text) 
 
     except Exception as e:
@@ -61,7 +60,7 @@ def query(id,data):
     try:
         chatbot = Chatbot(api_key=api_key)
         ai_res_text = chatbot.ask(
-            'please answer my question in lnaguage {lang} . {q}'.format(lang=data["lang"],q=query_text)
+            'please answer my question in lnaguage {lang} . {q}'.format(lang=data["text_language"],q=query_text)
         )
         print('answer :: {a}'.format(a=ai_res_text))
         ai_res_is_successful = True
@@ -74,7 +73,7 @@ def query(id,data):
         return
     
     try:
-        text_to_speech(0,3,ai_res_text,data["lang"],answer_file_path,ariana_key)            
+        text_to_speech(0,3,ai_res_text,data["iso_language"],answer_file_path,ariana_key)            
         #send answer file to client
         f = open(answer_file_path,mode="rb")
         answer_audio_mp3_file = f.read()
