@@ -135,7 +135,7 @@ __export(root_exports, {
 var import_node2 = require("@remix-run/node"), import_react5 = require("@remix-run/react"), import_react_hot_toast2 = require("react-hot-toast");
 
 // app/tailwind.css
-var tailwind_default = "/build/_assets/tailwind-CUEX62CE.css";
+var tailwind_default = "/build/_assets/tailwind-EH3ECZEL.css";
 
 // app/socket.ts
 var import_react3 = require("react"), import_socket = require("socket.io-client"), import_react_hot_toast = require("react-hot-toast");
@@ -330,67 +330,67 @@ var import_react7 = require("react");
 
 // app/components/language-selector.tsx
 var import_jsx_dev_runtime4 = require("react/jsx-dev-runtime"), langs = [
-  "fa",
-  "en",
-  "ar",
-  "af",
-  "bs",
-  "ca",
-  "cs",
-  "cy",
-  "da",
-  "dr",
-  "el",
-  "et",
-  "es",
-  "fi",
-  "fr",
-  "hy",
-  "hu",
-  "hi",
-  "it",
-  "id",
-  "kn",
-  "ko",
-  "ja",
-  "la",
-  "lv",
-  "ml",
-  "mr",
-  "mk",
-  "nl",
-  "ne",
-  "no",
-  "ru",
-  "ro",
-  "sr",
-  "sk",
-  "sv",
-  "tr",
-  "pl",
-  "pt",
-  "ur",
-  "zh"
+  { iso: "fa", text: "persian" },
+  { iso: "en", text: "english" },
+  { iso: "ar", text: "arabic" },
+  { iso: "af", text: "african" },
+  { iso: "bs", text: "bosnian" },
+  { iso: "ca", text: "catalan" },
+  { iso: "cs", text: "Czech" },
+  { iso: "cy", text: "Welsh" },
+  { iso: "da", text: "danish" },
+  { iso: "dr", text: "germany" },
+  { iso: "et", text: "estonian" },
+  { iso: "es", text: "spanish" },
+  { iso: "el", text: "greek" },
+  { iso: "fi", text: "finnish" },
+  { iso: "fr", text: "french" },
+  { iso: "hi", text: "hindi" },
+  { iso: "hu", text: "hungarian" },
+  { iso: "hy", text: "armanian" },
+  { iso: "it", text: "italian" },
+  { iso: "id", text: "indonesian" },
+  { iso: "ja", text: "japanese" },
+  { iso: "kn", text: "kannada" },
+  { iso: "ko", text: "korean" },
+  { iso: "pl", text: "polish" },
+  { iso: "pt", text: "portuguese" },
+  { iso: "la", text: "latin" },
+  { iso: "lv", text: "latvian" },
+  { iso: "ml", text: "malay" },
+  { iso: "mk", text: "makedonain" },
+  { iso: "mr", text: "marathi" },
+  { iso: "ne", text: "nepali" },
+  { iso: "nl", text: "dutch" },
+  { iso: "no", text: "norwegian" },
+  { iso: "ru", text: "russian" },
+  { iso: "ro", text: "romanian" },
+  { iso: "tr", text: "turkish" },
+  { iso: "sr", text: "serbian" },
+  { iso: "sk", text: "slovak" },
+  { iso: "sv", text: "swedish" },
+  { iso: "ur", text: "urdu" },
+  { iso: "zh", text: "chinese" }
 ];
 function LanguageSelector({ lang, setLang }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("div", { className: "dropdown text-secondary", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("label", { className: "btn btn-primary m-1", tabIndex: 0, children: lang }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("label", { className: "btn btn-primary m-1 w-20 min-[358px]:w-28", tabIndex: 0, children: lang }, void 0, !1, {
       fileName: "app/components/language-selector.tsx",
-      lineNumber: 29,
+      lineNumber: 52,
       columnNumber: 13
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
       "ul",
       {
         tabIndex: 0,
-        className: "msg-container dropdown-content menu shadow bg-primary rounded-sm w-16 h-40 overflow-y-auto overflow-x-hidden flex flex-row scrol",
-        children: langs.map((l) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("li", { onClick: () => setLang(l), children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("a", { children: l }, void 0, !1, {
+        className: "msg-container dropdown-content menu shadow bg-primary rounded-sm w-20 min-[358px]:w-28 h-40 overflow-y-auto overflow-x-hidden flex flex-row scrol",
+        children: langs.map((l) => /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("li", { onClick: () => setLang(l.text), children: /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)("a", { children: l.text }, void 0, !1, {
           fileName: "app/components/language-selector.tsx",
-          lineNumber: 36,
+          lineNumber: 59,
           columnNumber: 25
-        }, this) }, l, !1, {
+        }, this) }, l.iso, !1, {
           fileName: "app/components/language-selector.tsx",
-          lineNumber: 35,
+          lineNumber: 58,
           columnNumber: 21
         }, this))
       },
@@ -398,14 +398,14 @@ function LanguageSelector({ lang, setLang }) {
       !1,
       {
         fileName: "app/components/language-selector.tsx",
-        lineNumber: 30,
+        lineNumber: 53,
         columnNumber: 13
       },
       this
     )
   ] }, void 0, !0, {
     fileName: "app/components/language-selector.tsx",
-    lineNumber: 28,
+    lineNumber: 51,
     columnNumber: 9
   }, this);
 }
@@ -413,7 +413,7 @@ function LanguageSelector({ lang, setLang }) {
 // app/routes/index.tsx
 var import_jsx_dev_runtime5 = require("react/jsx-dev-runtime");
 function Index() {
-  let { voices } = useVMContext(), { isLoading } = useLoadingContext(), [lang, setLang] = (0, import_react7.useState)("en");
+  let { voices } = useVMContext(), { isLoading } = useLoadingContext(), [lang, setLang] = (0, import_react7.useState)("english");
   return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { className: "flex flex-col w-full bg-primary lg:w-[55%] xl:w-[35%] mx-auto min-h-screen max-h-screen h-screen", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("header", { className: "flex flex-row w-full h-32 bg-secondary", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("span", { className: "flex flex-col my-auto ml-2 lg:ml-16 text-primary font-mono font-extrabold text-3xl h-10", children: [
@@ -520,7 +520,7 @@ function Index() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "a47e7f3b", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-TU4BLQTF.js", imports: ["/build/_shared/chunk-VHSI2ZSL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-MHPJQJKX.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-A47E7F3B.js" };
+var assets_manifest_default = { version: "525c10c1", entry: { module: "/build/entry.client-3TUG74CF.js", imports: ["/build/_shared/chunk-KX73WXZQ.js", "/build/_shared/chunk-NYPLP55S.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-3UR2HREM.js", imports: ["/build/_shared/chunk-VHSI2ZSL.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-HOES36DU.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-525C10C1.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "public\\build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_postcss: !1, unstable_tailwind: !0, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
