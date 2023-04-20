@@ -4,6 +4,8 @@ an app for voice interaction with reversed engineered ChatGPT via [Python-ChatGP
 
 ## Demo
 
-![demo of app](/demo)
+![demo of app](/demo.png)
 
 ## Installation
+
+refer to document.pdf
