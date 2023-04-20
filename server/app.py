@@ -19,16 +19,25 @@ APP_PORT = os.environ['APP_PORT']
 server = socketio.Server(cors_allowed_origins='*',max_http_buffer_size=100000000)
 app = socketio.WSGIApp(server)
 
+#socket io events:
+#event connect triggers when a connection between client and server starts
 @server.event
 def connect(_,__):
     print("start connecting ...")
 
+#event disconnect triggers when a connection between client and server ends
 @server.event
 def disconnect(_):
     print("disconnecting ...")
 
+#event query :
+#triggers when client send a voice to server
+#in end server emit answer event
 @server.event
 def query(id,data):
+    #result format of answer
+    #status: boolean, specify whether there is an error on not
+    #data: string | blob, if there is an error data is a message
     response = {
         "status":False,
         "data":"Try Again ..."
@@ -87,6 +96,7 @@ def query(id,data):
         server.emit('answer',response,to=id)
         return
     try:
+        #in end we remove files because we don't need them now
         os.remove(query_file_path)
         os.remove(answer_file_path)
     except Exception as e:
