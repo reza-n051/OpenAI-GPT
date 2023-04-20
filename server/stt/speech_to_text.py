@@ -1,13 +1,16 @@
 import openai
 
+#arg1   speech_path : path where speech file is saved
+#arg2   language    : language of query
+#result text        : text of speech 
 def speech_to_text(
-        text_path,
+        speech_path,
         language
     ):
-    x = open(text_path,"rb")
-    query_text = openai.Audio.transcribe(
+    x = open(speech_path,"rb")
+    text = openai.Audio.transcribe(
         model="whisper-1",
         file=x,
         language=language
     )["text"]
-    return query_text
+    return text
